@@ -43,17 +43,17 @@ export const CounterNumber: React.FC<CounterNumberProps> = ({
   }, [isInView, end]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center text-center gap-4">
-      <div className="text-volt text-3xl">{icon}</div>
+    <div ref={ref} className="flex flex-col items-center text-center gap-3 p-4 sm:p-6 rounded-2xl border border-ice/5 bg-ice/[0.01]">
+      <div className="text-volt/70 mb-1">{icon}</div>
       <motion.div
-        className="hero-heading font-black text-[clamp(2.5rem,8vw,5rem)] leading-none"
+        className="hero-heading font-black text-[clamp(2rem,6vw,4rem)] leading-none"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5 }}
       >
         {prefix}{count.toLocaleString('pt-BR')}{suffix}
       </motion.div>
-      <p className="text-ice/70 font-light uppercase tracking-wider text-sm">
+      <p className="text-ice/40 font-light uppercase tracking-wider text-xs sm:text-sm">
         {label}
       </p>
     </div>
