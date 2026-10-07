@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Zap } from 'lucide-react';
 import { navigation } from '@/data/navigation';
@@ -20,8 +21,8 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="relative z-50 flex items-center justify-between px-5 sm:px-8 md:px-10 lg:px-16 pt-6 md:pt-8">
       {/* Logo - esquerda */}
-      <a
-        href="#"
+      <Link
+        to="/"
         className="flex items-center gap-2 group flex-shrink-0"
       >
         <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-volt to-volt-dark flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
@@ -30,7 +31,7 @@ export const Navbar: React.FC = () => {
         <span className="text-ice font-bold text-base sm:text-lg tracking-tight">
           {siteConfig.name}
         </span>
-      </a>
+      </Link>
 
       {/* Links centralizados com efeito glow */}
       <div className="hidden md:flex items-center gap-3 absolute left-1/2 -translate-x-1/2">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/cn';
 
 interface GlowNavLinkProps {
@@ -14,13 +15,29 @@ export const GlowNavLink: React.FC<GlowNavLinkProps> = ({
   onClick,
   className,
 }) => {
+  const isExternal = href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        onClick={onClick}
+        className={cn('glow-nav-btn', className)}
+        target={href.startsWith('http') ? '_blank' : undefined}
+        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+      >
+        {label}
+      </a>
+    );
+  }
+
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       onClick={onClick}
       className={cn('glow-nav-btn', className)}
     >
       {label}
-    </a>
+    </Link>
   );
 };

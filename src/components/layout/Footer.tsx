@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, Linkedin, Facebook, Zap, ArrowUp } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { navigation } from '@/data/navigation';
@@ -17,14 +18,14 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-ice/5">
           {/* Logo & Description */}
           <div className="md:col-span-4 space-y-5">
-            <a href="#" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-volt to-volt-dark flex items-center justify-center">
                 <Zap size={18} className="text-bg" fill="currentColor" />
               </div>
               <span className="text-ice font-bold text-lg tracking-tight">
                 {siteConfig.name}
               </span>
-            </a>
+            </Link>
             <p className="text-ice/50 font-light text-sm leading-relaxed max-w-xs">
               Locação de geradores de energia com entrega rápida, suporte técnico 24h e potência sob medida para a sua operação.
             </p>
@@ -65,12 +66,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               {navigation.map((item) => (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="text-ice/50 hover:text-ice transition-colors duration-200 text-sm"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
