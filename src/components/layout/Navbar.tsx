@@ -18,10 +18,10 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav className="relative z-50 flex items-center justify-between px-5 sm:px-8 md:px-10 lg:px-16 pt-6 md:pt-8">
-      {/* Logo */}
+      {/* Logo - esquerda */}
       <a
         href="#"
-        className="flex items-center gap-2 group"
+        className="flex items-center gap-2 group flex-shrink-0"
       >
         <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-volt to-volt-dark flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
           <Zap size={18} className="text-bg" fill="currentColor" />
@@ -31,8 +31,8 @@ export const Navbar: React.FC = () => {
         </span>
       </a>
 
-      {/* Desktop links */}
-      <div className="hidden md:flex items-center gap-6 lg:gap-8">
+      {/* Links centralizados */}
+      <div className="hidden md:flex items-center gap-6 lg:gap-8 absolute left-1/2 -translate-x-1/2">
         {navigation.map((item) => (
           <a
             key={item.href}
@@ -44,13 +44,13 @@ export const Navbar: React.FC = () => {
         ))}
       </div>
 
-      {/* Mobile hamburger */}
+      {/* Mobile hamburger - direita */}
       <button
         type="button"
         onClick={toggleMenu}
         aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
         aria-expanded={isOpen}
-        className="md:hidden text-ice p-2 hover:opacity-70 transition-opacity duration-200"
+        className="md:hidden text-ice p-2 hover:opacity-70 transition-opacity duration-200 flex-shrink-0"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
