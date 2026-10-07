@@ -28,8 +28,7 @@ export const ContactButton: React.FC<ContactButtonProps> = ({
         'text-white font-medium uppercase tracking-widest',
         'px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4',
         'text-xs sm:text-sm md:text-base',
-        'outline outline-2 outline-white -outline-offset-[3px]',
-        'transition-transform duration-200 hover:scale-105',
+        'transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-volt/20',
         className
       )}
     >

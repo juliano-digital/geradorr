@@ -65,5 +65,4 @@ export interface SiteConfig {
     linkedin: string;
     facebook: string;
   };
-  heroImage: string;
 }

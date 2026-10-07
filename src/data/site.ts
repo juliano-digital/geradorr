@@ -13,5 +13,4 @@ export const siteConfig: SiteConfig = {
     linkedin: 'https://linkedin.com/company/voltmaxgeradores',
     facebook: 'https://facebook.com/voltmaxgeradores',
   },
-  heroImage: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80',
 };

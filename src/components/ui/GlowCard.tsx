@@ -8,7 +8,7 @@ interface GlowCardProps {
 
 export const GlowCard: React.FC<GlowCardProps> = ({ children, className }) => {
   return (
-    <div className={cn('glow-card p-6', className)}>
+    <div className={cn('glow-card p-5 sm:p-6', className)}>
       <div className="relative z-10">{children}</div>
     </div>
   );

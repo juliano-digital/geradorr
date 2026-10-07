@@ -14,7 +14,7 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section
       id="projetos"
-      className="bg-bg rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] relative z-10 px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-10"
+      className="bg-bg rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] relative z-10 px-5 sm:px-8 md:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-32 pb-10"
     >
       <div className="max-w-7xl mx-auto">
         <FadeIn>
@@ -62,23 +62,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, scroll
       }}
     >
       <div
-        className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-bg p-4 sm:p-6 md:p-8 h-full flex flex-col"
-        style={{ top: `${index * 28}px` }}
+        className="rounded-[32px] sm:rounded-[40px] md:rounded-[48px] border border-ice/10 bg-[#111111] p-4 sm:p-6 md:p-8 h-full flex flex-col"
       >
         {/* Top row */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div className="flex items-center gap-4 sm:gap-6">
-            <span className="text-ice font-black text-[clamp(3rem,10vw,140px)] leading-none">
+            <span className="text-ice/10 font-black text-[clamp(2.5rem,8vw,120px)] leading-none">
               {project.number}
             </span>
             <div>
               <span className="text-volt text-xs sm:text-sm font-medium uppercase tracking-wider">
                 {project.category}
               </span>
-              <h3 className="text-ice font-bold text-lg sm:text-xl md:text-2xl">
+              <h3 className="text-ice font-bold text-lg sm:text-xl md:text-2xl mt-0.5">
                 {project.title}
               </h3>
-              <p className="text-ice/60 text-sm">{project.power}</p>
+              <p className="text-ice/40 text-sm mt-0.5">{project.power}</p>
             </div>
           </div>
           <GhostButton label="Ver Projeto" />
@@ -93,7 +92,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, scroll
               alt={`${project.title} - imagem 1`}
               loading="lazy"
               decoding="async"
-              className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] object-cover flex-1"
+              className="w-full rounded-2xl sm:rounded-3xl object-cover flex-1"
               style={{ height: 'clamp(130px, 16vw, 230px)' }}
               width={400}
               height={230}
@@ -103,7 +102,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, scroll
               alt={`${project.title} - imagem 2`}
               loading="lazy"
               decoding="async"
-              className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] object-cover flex-1"
+              className="w-full rounded-2xl sm:rounded-3xl object-cover flex-1"
               style={{ height: 'clamp(160px, 22vw, 340px)' }}
               width={400}
               height={340}
@@ -117,7 +116,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, scroll
               alt={`${project.title} - imagem principal`}
               loading="lazy"
               decoding="async"
-              className="w-full h-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] object-cover"
+              className="w-full h-full rounded-2xl sm:rounded-3xl object-cover"
               width={600}
               height={570}
             />
