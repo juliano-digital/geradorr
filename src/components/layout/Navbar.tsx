@@ -64,28 +64,30 @@ export const Navbar: React.FC = () => {
             transition={{ duration: 0.3 }}
             className={cn(
               'fixed inset-0 top-0 bg-bg/98 backdrop-blur-xl z-40',
-              'flex flex-col items-center justify-center gap-8',
+              'flex flex-col items-center justify-center gap-6',
               'md:hidden'
             )}
           >
             {navigation.map((item, i) => (
-              <motion.a
+              <motion.div
                 key={item.href}
-                href={item.href}
-                onClick={closeMenu}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className="text-ice font-medium uppercase tracking-wider text-2xl hover:text-volt transition-colors duration-200"
               >
-                {item.label}
-              </motion.a>
+                <GlowNavLink
+                  href={item.href}
+                  label={item.label}
+                  onClick={closeMenu}
+                  className="text-lg px-8 py-4"
+                />
+              </motion.div>
             ))}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="mt-8"
+              className="mt-6"
             >
               <a
                 href={`https://wa.me/${siteConfig.whatsapp}`}
