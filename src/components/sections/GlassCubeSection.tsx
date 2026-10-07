@@ -440,18 +440,7 @@ const GlassCubeSection: React.FC = () => {
         />
 
         {/* UI Overlay */}
-        <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-8 sm:p-12">
-          {/* Top */}
-          <div className="flex justify-between items-start">
-            <FadeIn delay={0.2}>
-              <div className="text-left">
-                <p className="text-ice/60 text-sm uppercase tracking-wider mb-2">Interativo</p>
-                <h3 className="text-ice font-bold text-2xl sm:text-3xl">Arraste para Explorar</h3>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Bottom */}
+        <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-end p-8 sm:p-12">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
             <FadeIn delay={0.4}>
               <div className="max-w-md">
