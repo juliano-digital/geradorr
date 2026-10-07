@@ -53,21 +53,6 @@ export const HeroSection: React.FC = () => {
             <p className="text-ice/70 font-light uppercase tracking-wide leading-snug max-w-[280px] sm:max-w-[360px] md:max-w-[440px] text-[clamp(0.8rem,1.4vw,1.25rem)]">
               Locação de geradores com entrega rápida, suporte 24h e potência sob medida para a sua operação.
             </p>
-
-            {/* Abstract visual element */}
-            <div className="hidden md:flex items-center gap-4">
-              <div className="flex flex-col items-end gap-1">
-                <span className="text-ice/30 text-xs uppercase tracking-widest">de</span>
-                <span className="text-ice font-bold text-lg">20 kVA</span>
-              </div>
-              <div className="w-24 h-[2px] bg-gradient-to-r from-volt/20 via-volt to-volt/20 relative">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-volt glow-radial" />
-              </div>
-              <div className="flex flex-col items-start gap-1">
-                <span className="text-ice/30 text-xs uppercase tracking-widest">até</span>
-                <span className="text-ice font-bold text-lg">2.000 kVA</span>
-              </div>
-            </div>
           </div>
         </FadeIn>
 
@@ -100,9 +85,6 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Decorative corner elements */}
-      <div className="absolute top-1/4 right-8 lg:right-16 w-32 h-32 lg:w-48 lg:h-48 rounded-full bg-volt/[0.02] blur-3xl" />
-      <div className="absolute bottom-1/4 left-8 lg:left-16 w-24 h-24 lg:w-36 lg:h-36 rounded-full bg-volt/[0.03] blur-2xl" />
     </section>
   );
 };
