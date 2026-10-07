@@ -4,6 +4,7 @@ import { Menu, X, Zap } from 'lucide-react';
 import { navigation } from '@/data/navigation';
 import { siteConfig } from '@/data/site';
 import { cn } from '@/lib/cn';
+import { GlitchNavLink } from '@/components/ui/GlitchNavLink';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,16 +32,15 @@ export const Navbar: React.FC = () => {
         </span>
       </a>
 
-      {/* Links centralizados */}
-      <div className="hidden md:flex items-center gap-6 lg:gap-8 absolute left-1/2 -translate-x-1/2">
-        {navigation.map((item) => (
-          <a
+      {/* Links centralizados com efeito glitch */}
+      <div className="hidden md:flex items-center gap-3 absolute left-1/2 -translate-x-1/2">
+        {navigation.map((item, index) => (
+          <GlitchNavLink
             key={item.href}
             href={item.href}
-            className="text-ice/70 font-medium uppercase tracking-wider text-xs lg:text-sm hover:text-ice transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-volt after:transition-all after:duration-300 hover:after:w-full"
-          >
-            {item.label}
-          </a>
+            label={item.label}
+            number={index + 1}
+          />
         ))}
       </div>
 
