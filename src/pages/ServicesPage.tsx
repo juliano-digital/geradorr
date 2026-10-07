@@ -62,7 +62,7 @@ const ServicesPage: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex flex-col items-center justify-center relative px-5 sm:px-8 md:px-10 lg:px-16 py-24">
+      <section className="min-h-[60vh] flex flex-col items-center justify-center relative px-5 sm:px-8 md:px-10 lg:px-16 py-24 pt-32">
         <div className="max-w-4xl mx-auto text-center">
           <FadeIn>
             <h1 className="hero-heading font-black uppercase leading-none tracking-tight text-[clamp(3rem,10vw,120px)] mb-6">

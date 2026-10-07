@@ -1,22 +1,16 @@
 import React from 'react';
-import { Navbar } from '@/components/layout/Navbar';
 import { ContactButton } from '@/components/ui/ContactButton';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { Zap } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="h-screen flex flex-col overflow-x-clip relative bg-bg">
+    <section className="h-screen flex flex-col overflow-x-clip relative bg-bg pt-20 md:pt-24">
       {/* Background grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'linear-gradient(#D7E2EA 1px, transparent 1px), linear-gradient(90deg, #D7E2EA 1px, transparent 1px)',
         backgroundSize: '60px 60px'
       }} />
-
-      {/* Navbar */}
-      <FadeIn delay={0} y={-20}>
-        <Navbar />
-      </FadeIn>
 
       {/* Main content */}
       <div className="flex-1 flex flex-col justify-center relative px-5 sm:px-8 md:px-10 lg:px-16">
