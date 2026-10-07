@@ -220,6 +220,22 @@ section {
   opacity: 0.7;
 }
 
+/* ══════════════════════════════════════════════════════════
+   GRADIENTE EM MOVIMENTO
+   O fundo é maior que o elemento e a posição desliza.
+   ══════════════════════════════════════════════════════════ */
+.fx-grad{
+  background:linear-gradient(120deg,#1a1a1e,#3a3a42,#6b6b78,#3a3a42,#1a1a1e);
+  background-size:300% 300%;
+  animation:grad 9s ease infinite;
+}
+
+@keyframes grad{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

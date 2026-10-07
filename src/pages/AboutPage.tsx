@@ -76,50 +76,48 @@ const AboutPage: React.FC = () => {
 
       {/* Mission Section */}
       <section className="bg-bg px-5 sm:px-8 md:px-10 lg:px-16 py-24 sm:py-32">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto text-center">
           <FadeIn>
             <h2 className="hero-heading font-black uppercase text-center mb-16 text-[clamp(2.5rem,8vw,100px)] leading-none tracking-tight">
               Nossa Missão
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <FadeIn delay={0.2} x={-30}>
-              <div className="space-y-6">
-                <p className="text-ice/80 text-lg leading-relaxed">
-                  Garantir que nenhuma operação pare por falta de energia. Combinamos expertise técnica com inovação constante para entregar soluções que superam expectativas.
-                </p>
-                <p className="text-ice/60 text-base leading-relaxed">
-                  Cada projeto é único. Por isso, desenvolvemos abordagens personalizadas que consideram não apenas a potência necessária, mas o contexto completo da sua operação.
-                </p>
-              </div>
-            </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="space-y-6 mb-16">
+              <p className="text-ice/80 text-lg leading-relaxed max-w-3xl mx-auto">
+                Garantir que nenhuma operação pare por falta de energia. Combinamos expertise técnica com inovação constante para entregar soluções que superam expectativas.
+              </p>
+              <p className="text-ice/60 text-base leading-relaxed max-w-3xl mx-auto">
+                Cada projeto é único. Por isso, desenvolvemos abordagens personalizadas que consideram não apenas a potência necessária, mas o contexto completo da sua operação.
+              </p>
+            </div>
+          </FadeIn>
 
-            <FadeIn delay={0.4} x={30}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-6 rounded-2xl border border-ice/10 bg-ice/[0.02] hover:border-volt/30 transition-all duration-300">
-                  <Shield size={32} className="text-volt mb-3" />
-                  <h3 className="text-ice font-semibold text-lg mb-2">Confiabilidade</h3>
-                  <p className="text-ice/50 text-sm">Equipamentos revisados e prontos para operação contínua.</p>
-                </div>
-                <div className="p-6 rounded-2xl border border-ice/10 bg-ice/[0.02] hover:border-volt/30 transition-all duration-300">
-                  <Award size={32} className="text-volt mb-3" />
-                  <h3 className="text-ice font-semibold text-lg mb-2">Excelência</h3>
-                  <p className="text-ice/50 text-sm">Frota moderna com tecnologia de última geração.</p>
-                </div>
-                <div className="p-6 rounded-2xl border border-ice/10 bg-ice/[0.02] hover:border-volt/30 transition-all duration-300">
-                  <Users size={32} className="text-volt mb-3" />
-                  <h3 className="text-ice font-semibold text-lg mb-2">Parceria</h3>
-                  <p className="text-ice/50 text-sm">Relacionamentos de longo prazo baseados em confiança.</p>
-                </div>
-                <div className="p-6 rounded-2xl border border-ice/10 bg-ice/[0.02] hover:border-volt/30 transition-all duration-300">
-                  <Target size={32} className="text-volt mb-3" />
-                  <h3 className="text-ice font-semibold text-lg mb-2">Precisão</h3>
-                  <p className="text-ice/50 text-sm">Dimensionamento exato para cada necessidade.</p>
-                </div>
+          <FadeIn delay={0.4}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+                <Shield size={32} className="text-volt mb-3 mx-auto" />
+                <h3 className="text-ice font-semibold text-lg mb-2">Confiabilidade</h3>
+                <p className="text-ice/50 text-sm">Equipamentos revisados e prontos para operação contínua.</p>
               </div>
-            </FadeIn>
-          </div>
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+                <Award size={32} className="text-volt mb-3 mx-auto" />
+                <h3 className="text-ice font-semibold text-lg mb-2">Excelência</h3>
+                <p className="text-ice/50 text-sm">Frota moderna com tecnologia de última geração.</p>
+              </div>
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+                <Users size={32} className="text-volt mb-3 mx-auto" />
+                <h3 className="text-ice font-semibold text-lg mb-2">Parceria</h3>
+                <p className="text-ice/50 text-sm">Relacionamentos de longo prazo baseados em confiança.</p>
+              </div>
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+                <Target size={32} className="text-volt mb-3 mx-auto" />
+                <h3 className="text-ice font-semibold text-lg mb-2">Precisão</h3>
+                <p className="text-ice/50 text-sm">Dimensionamento exato para cada necessidade.</p>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
