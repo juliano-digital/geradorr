@@ -1,35 +1,27 @@
 import React from 'react';
-import { HeroSection } from '@/components/sections/HeroSection';
-import { MarqueeSection } from '@/components/sections/MarqueeSection';
-import { AboutSection } from '@/components/sections/AboutSection';
-import { ServicesSection } from '@/components/sections/ServicesSection';
-import { FleetSection } from '@/components/sections/FleetSection';
-import { ProjectsSection } from '@/components/sections/ProjectsSection';
-import { NumbersSection } from '@/components/sections/NumbersSection';
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import { FaqSection } from '@/components/sections/FaqSection';
-import { ContactSection } from '@/components/sections/ContactSection';
-import { Footer } from '@/components/layout/Footer';
-import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Layout } from '@/components/layout/Layout';
+import HomePage from '@/pages/HomePage';
+import AboutPage from '@/pages/AboutPage';
+import ServicesPage from '@/pages/ServicesPage';
+import FleetPage from '@/pages/FleetPage';
+import ProjectsPage from '@/pages/ProjectsPage';
+import ContactPage from '@/pages/ContactPage';
 
 const App: React.FC = () => {
   return (
-    <div className="overflow-x-clip">
-      <main>
-        <HeroSection />
-        <MarqueeSection />
-        <AboutSection />
-        <ServicesSection />
-        <FleetSection />
-        <ProjectsSection />
-        <NumbersSection />
-        <TestimonialsSection />
-        <FaqSection />
-        <ContactSection />
-      </main>
-      <Footer />
-      <WhatsAppFloat />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="sobre" element={<AboutPage />} />
+          <Route path="servicos" element={<ServicesPage />} />
+          <Route path="frota" element={<FleetPage />} />
+          <Route path="projetos" element={<ProjectsPage />} />
+          <Route path="contato" element={<ContactPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
