@@ -2,6 +2,7 @@ import React from 'react';
 import { SEO } from '@/components/SEO';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { ContactButton } from '@/components/ui/ContactButton';
+import GlassCubeSection from '@/components/sections/GlassCubeSection';
 import { Shield, Award, Users, Target, Zap, Clock, TrendingUp, Globe } from 'lucide-react';
 
 const AboutPage: React.FC = () => {
@@ -121,6 +122,9 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Interactive 3D Glass Cube Section */}
+      <GlassCubeSection />
 
       {/* Journey Section */}
       <section className="bg-[#0a0a0a] px-5 sm:px-8 md:px-10 lg:px-16 py-24 sm:py-32">
