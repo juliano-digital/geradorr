@@ -1,47 +1,66 @@
-import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
-import { GlowCard } from '@/components/ui/GlowCard';
 import { testimonials } from '@/data/testimonials';
 
 export const TestimonialsSection: React.FC = () => {
   return (
-    <section className="bg-bg px-5 sm:px-8 md:px-10 lg:px-16 py-20 sm:py-24 md:py-32">
-      <div className="max-w-6xl mx-auto">
-        <FadeIn>
-          <h2 className="hero-heading font-black uppercase text-center mb-12 sm:mb-16 md:mb-20 text-[clamp(2rem,8vw,100px)] leading-none tracking-tight">
-            Depoimentos
-          </h2>
-        </FadeIn>
+    <section className="py-12 sm:py-16 bg-bg">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <FadeIn>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+              O Que Nossos Clientes Dizem
+            </h2>
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
+              Depoimentos reais de empresas que confiam na VoltMax
+            </p>
+          </FadeIn>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          {testimonials.map((testimonial, i) => (
-            <FadeIn key={testimonial.id} delay={i * 0.12}>
-              <GlowCard className="h-full flex flex-col p-6 sm:p-7">
-                {/* Quote icon */}
-                <div className="mb-4">
-                  <Quote size={24} className="text-volt/30" />
-                </div>
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <FadeIn key={testimonial.id} delay={index * 0.1}>
+              <article className="p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-volt/30 transition-all duration-200">
+                {/* Quote Icon */}
+                <Quote size={32} className="text-volt/30 mb-4" />
 
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, j) => (
-                    <Star key={j} size={14} className="text-volt fill-volt" />
+                {/* Rating */}
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star key={i} size={16} className="text-volt fill-volt" />
                   ))}
                 </div>
 
                 {/* Text */}
-                <p className="text-ice/70 font-light leading-relaxed text-sm sm:text-base flex-1 mb-6">
+                <p className="text-base text-white/80 leading-relaxed mb-6">
                   "{testimonial.text}"
                 </p>
 
                 {/* Author */}
-                <div className="border-t border-ice/5 pt-4">
-                  <p className="text-ice font-medium text-sm">{testimonial.name}</p>
-                  <p className="text-ice/40 text-xs mt-0.5">{testimonial.role}</p>
-                  <p className="text-volt/70 text-xs font-medium mt-0.5">{testimonial.company}</p>
+                <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                  {/* Avatar */}
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-volt to-volt-dark flex items-center justify-center flex-shrink-0">
+                    <span className="text-bg font-bold text-lg">
+                      {testimonial.name.charAt(0)}
+                    </span>
+                  </div>
+
+                  {/* Info */}
+                  <div>
+                    <h4 className="text-white font-semibold text-sm sm:text-base">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-white/60 text-xs sm:text-sm">
+                      {testimonial.role}
+                    </p>
+                    <p className="text-volt text-xs sm:text-sm font-medium">
+                      {testimonial.company}
+                    </p>
+                  </div>
                 </div>
-              </GlowCard>
+              </article>
             </FadeIn>
           ))}
         </div>
