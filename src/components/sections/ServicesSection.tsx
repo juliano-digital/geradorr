@@ -1,4 +1,3 @@
-import React from 'react';
 import { Zap, Wrench, Cable, PartyPopper, Siren } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { services } from '@/data/services';
@@ -13,50 +12,42 @@ const iconMap: Record<string, React.ElementType> = {
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section
-      id="servicos"
-      className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 lg:px-16 py-20 sm:py-24 md:py-32"
-    >
-      <div className="max-w-5xl mx-auto">
-        <FadeIn>
-          <h2 className="text-[#0C0C0C] font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 text-[clamp(3rem,12vw,160px)] leading-none tracking-tight">
-            Serviços
-          </h2>
-        </FadeIn>
+    <section id="servicos" className="py-12 sm:py-16 bg-bg">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <FadeIn>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+              Nossos Serviços
+            </h2>
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
+              Soluções completas em energia para sua operação nunca parar
+            </p>
+          </FadeIn>
+        </div>
 
-        <div className="space-y-0">
-          {services.map((service, i) => {
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {services.map((service, index) => {
             const IconComponent = iconMap[service.icon];
             return (
-              <FadeIn key={service.id} delay={i * 0.08}>
-                <div className="group flex items-start gap-4 sm:gap-6 md:gap-10 py-8 sm:py-10 md:py-12 border-b border-[#0C0C0C]/10 relative overflow-hidden cursor-default">
-                  {/* Animated bottom line */}
-                  <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-volt transition-all duration-500 group-hover:w-full" />
-
-                  {/* Number */}
-                  <span className="text-[#0C0C0C]/10 group-hover:text-volt/40 font-black text-[clamp(3rem,8vw,120px)] leading-none flex-shrink-0 transition-colors duration-300">
-                    {service.number}
-                  </span>
-
-                  {/* Content */}
-                  <div className="flex-1 pt-2 sm:pt-4 md:pt-6">
-                    <div className="flex items-center gap-3 mb-2 sm:mb-3">
-                      <h3 className="text-[#0C0C0C] font-semibold uppercase text-[clamp(1rem,2.2vw,2.1rem)]">
-                        {service.title}
-                      </h3>
-                    </div>
-                    <p className="text-[#0C0C0C]/50 font-light leading-relaxed max-w-2xl text-[clamp(0.85rem,1.6vw,1.25rem)]">
-                      {service.description}
-                    </p>
+              <FadeIn key={service.id} delay={index * 0.1}>
+                <article className="group p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-volt/30 hover:bg-white/10 transition-all duration-200">
+                  {/* Icon */}
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-volt/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-volt/20 transition-colors duration-200">
+                    {IconComponent && (
+                      <IconComponent size={24} className="text-volt sm:w-7 sm:h-7" />
+                    )}
                   </div>
 
-                  {/* Icon */}
-                  {IconComponent && (
-                    <div className="hidden sm:flex flex-shrink-0 w-12 h-12 rounded-full bg-[#0C0C0C]/5 group-hover:bg-volt/10 items-center justify-center transition-all duration-300">
-                      <IconComponent size={20} className="text-[#0C0C0C]/30 group-hover:text-volt transition-colors duration-300" />
-                    </div>
-                  )}
-                </div>
+                  {/* Content */}
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-base text-white/70 leading-relaxed">
+                    {service.description}
+                  </p>
+                </article>
               </FadeIn>
             );
           })}

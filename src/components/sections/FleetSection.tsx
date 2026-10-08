@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Fuel, Volume2, Gauge } from 'lucide-react';
+import { useState } from 'react';
+import { Gauge, Fuel, Volume2 } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
-import { GlowCard } from '@/components/ui/GlowCard';
-import { GhostButton } from '@/components/ui/GhostButton';
 import { fleet } from '@/data/fleet';
 import { buildWhatsAppLink } from '@/lib/whatsapp';
-import { cn } from '@/lib/cn';
 
 type FilterCategory = 'all' | 'low' | 'mid' | 'high';
 
@@ -25,31 +21,36 @@ export const FleetSection: React.FC = () => {
     : fleet.filter((g) => g.category === activeFilter);
 
   return (
-    <section
-      id="frota"
-      className="bg-bg -mt-10 sm:-mt-12 md:-mt-14 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] z-10 relative px-5 sm:px-8 md:px-10 lg:px-16 py-20 sm:py-24 md:py-32"
-    >
-      <div className="max-w-7xl mx-auto">
-        <FadeIn>
-          <h2 className="hero-heading font-black uppercase text-center mb-12 sm:mb-16 md:mb-20 text-[clamp(3rem,12vw,160px)] leading-none tracking-tight">
-            Nossa Frota
-          </h2>
-        </FadeIn>
+    <section id="frota" className="py-12 sm:py-16 bg-[#0a0a0a]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <FadeIn>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+              Nossa Frota
+            </h2>
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
+              Geradores de 20 a 2.000 kVA prontos para entrega imediata
+            </p>
+          </FadeIn>
+        </div>
 
         {/* Filters */}
         <FadeIn delay={0.2}>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-14">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
             {filters.map((filter) => (
               <button
                 key={filter.value}
                 type="button"
                 onClick={() => setActiveFilter(filter.value)}
-                className={cn(
-                  'px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium uppercase tracking-wider transition-all duration-200',
-                  activeFilter === filter.value
+                className={`
+                  px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-medium
+                  transition-all duration-200 min-h-[44px]
+                  ${activeFilter === filter.value
                     ? 'bg-volt text-bg shadow-lg shadow-volt/20'
-                    : 'bg-ice/5 text-ice/50 hover:bg-ice/10 hover:text-ice/80 border border-ice/10'
-                )}
+                    : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10'
+                  }
+                `}
               >
                 {filter.label}
               </button>
@@ -57,68 +58,80 @@ export const FleetSection: React.FC = () => {
           </div>
         </FadeIn>
 
-        {/* Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFilter}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
-          >
-            {filteredFleet.map((gen, i) => (
-              <FadeIn key={gen.id} delay={i * 0.08}>
-                <GlowCard className="h-full flex flex-col">
-                  <div className="relative overflow-hidden rounded-xl mb-4 -mx-2 -mt-2">
-                    <img
-                      src={gen.image}
-                      alt={gen.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-48 object-cover"
-                      width={400}
-                      height={192}
-                    />
-                    <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-bg/80 backdrop-blur-sm border border-volt/20">
-                      <span className="text-volt text-xs font-bold">{gen.power} kVA</span>
-                    </div>
+        {/* Fleet Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {filteredFleet.map((gen, index) => (
+            <FadeIn key={gen.id} delay={index * 0.1}>
+              <article className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-volt/30 transition-all duration-200">
+                {/* Image */}
+                <div className="relative aspect-video overflow-hidden">
+                  <img
+                    src={gen.image}
+                    alt={`Gerador de ${gen.power} kVA ${gen.noise.toLowerCase()} para ${gen.applications[0].toLowerCase()}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-bg/80 backdrop-blur-sm border border-volt/20">
+                    <span className="text-volt text-sm font-bold">{gen.power} kVA</span>
                   </div>
-                  
-                  <h3 className="text-ice font-semibold text-lg mb-3">{gen.name}</h3>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2.5 text-ice/60 text-sm">
-                      <Fuel size={14} className="text-volt/70" />
-                      <span>{gen.fuel}</span>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+                    {gen.name}
+                  </h3>
+
+                  {/* Specs */}
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-3 text-white/70">
+                      <Fuel size={18} className="text-volt flex-shrink-0" />
+                      <span className="text-sm sm:text-base">{gen.fuel}</span>
                     </div>
-                    <div className="flex items-center gap-2.5 text-ice/60 text-sm">
-                      <Volume2 size={14} className="text-volt/70" />
-                      <span>{gen.noise}</span>
+                    <div className="flex items-center gap-3 text-white/70">
+                      <Volume2 size={18} className="text-volt flex-shrink-0" />
+                      <span className="text-sm sm:text-base">{gen.noise}</span>
                     </div>
-                    <div className="flex items-center gap-2.5 text-ice/60 text-sm">
-                      <Gauge size={14} className="text-volt/70" />
-                      <span>{gen.power} kVA</span>
+                    <div className="flex items-center gap-3 text-white/70">
+                      <Gauge size={18} className="text-volt flex-shrink-0" />
+                      <span className="text-sm sm:text-base">{gen.power} kVA</span>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-1.5 mb-5 mt-auto">
-                    {gen.applications.map((app) => (
-                      <span key={app} className="px-2.5 py-1 rounded-full bg-ice/5 border border-ice/10 text-ice/50 text-xs">
+                  {/* Applications */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {gen.applications.slice(0, 3).map((app) => (
+                      <span
+                        key={app}
+                        className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs sm:text-sm"
+                      >
                         {app}
                       </span>
                     ))}
                   </div>
-                  
-                  <GhostButton
-                    label="Solicitar Cotação"
+
+                  {/* CTA */}
+                  <a
                     href={buildWhatsAppLink(`Olá! Gostaria de uma cotação para o ${gen.name} (${gen.power} kVA).`)}
-                  />
-                </GlowCard>
-              </FadeIn>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      w-full px-6 py-3 rounded-full
+                      border-2 border-white/20
+                      text-white font-semibold text-sm sm:text-base
+                      flex items-center justify-center
+                      transition-all duration-200 hover:bg-white/10 hover:border-white/40
+                      min-h-[44px]
+                    "
+                  >
+                    Solicitar Cotação
+                  </a>
+                </div>
+              </article>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

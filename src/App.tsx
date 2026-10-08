@@ -1,28 +1,45 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Layout } from '@/components/layout/Layout';
-import HomePage from '@/pages/HomePage';
-import AboutPage from '@/pages/AboutPage';
-import ServicesPage from '@/pages/ServicesPage';
-import FleetPage from '@/pages/FleetPage';
-import ProjectsPage from '@/pages/ProjectsPage';
-import ContactPage from '@/pages/ContactPage';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { ServicesSection } from '@/components/sections/ServicesSection';
+import { PowerCalculator } from '@/components/PowerCalculator';
+import { FleetSection } from '@/components/sections/FleetSection';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { ContactSection } from '@/components/sections/ContactSection';
+import { SEOHead } from '@/components/SEOHead';
 
-const App: React.FC = () => {
+function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="sobre" element={<AboutPage />} />
-          <Route path="servicos" element={<ServicesPage />} />
-          <Route path="frota" element={<FleetPage />} />
-          <Route path="projetos" element={<ProjectsPage />} />
-          <Route path="contato" element={<ContactPage />} />
-        </Route>
-      </Routes>
+      <SEOHead />
+      <div className="min-h-screen bg-bg text-white">
+        <Header />
+        
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <HeroSection />
+                  <ServicesSection />
+                  <PowerCalculator />
+                  <FleetSection />
+                  <TestimonialsSection />
+                  <ContactSection />
+                </>
+              }
+            />
+          </Routes>
+        </main>
+
+        <Footer />
+        <WhatsAppFloat />
+      </div>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
