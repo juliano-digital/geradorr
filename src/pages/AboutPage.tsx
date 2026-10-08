@@ -85,10 +85,10 @@ const AboutPage: React.FC = () => {
 
           <FadeIn delay={0.2}>
             <div className="space-y-6 mb-16">
-              <p className="text-white text-lg leading-relaxed max-w-3xl mx-auto" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.4)' }}>
+              <p className="text-white text-lg leading-relaxed max-w-3xl mx-auto text-center" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.4)' }}>
                 Garantir que nenhuma operação pare por falta de energia. Combinamos expertise técnica com inovação constante para entregar soluções que superam expectativas.
               </p>
-              <p className="text-white/80 text-base leading-relaxed max-w-3xl mx-auto" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>
+              <p className="text-white/80 text-base leading-relaxed max-w-3xl mx-auto text-center" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>
                 Cada projeto é único. Por isso, desenvolvemos abordagens personalizadas que consideram não apenas a potência necessária, mas o contexto completo da sua operação.
               </p>
             </div>
@@ -98,23 +98,23 @@ const AboutPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
                 <Shield size={32} className="text-volt mb-3 mx-auto" />
-                <h3 className="text-white font-semibold text-lg mb-2" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Confiabilidade</h3>
-                <p className="text-white/70 text-sm" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Equipamentos revisados e prontos para operação contínua.</p>
+                <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Confiabilidade</h3>
+                <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Equipamentos revisados e prontos para operação contínua.</p>
               </div>
               <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
                 <Award size={32} className="text-volt mb-3 mx-auto" />
-                <h3 className="text-white font-semibold text-lg mb-2" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Excelência</h3>
-                <p className="text-white/70 text-sm" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Frota moderna com tecnologia de última geração.</p>
+                <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Excelência</h3>
+                <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Frota moderna com tecnologia de última geração.</p>
               </div>
               <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
                 <Users size={32} className="text-volt mb-3 mx-auto" />
-                <h3 className="text-white font-semibold text-lg mb-2" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Parceria</h3>
-                <p className="text-white/70 text-sm" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Relacionamentos de longo prazo baseados em confiança.</p>
+                <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Parceria</h3>
+                <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Relacionamentos de longo prazo baseados em confiança.</p>
               </div>
               <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
                 <Target size={32} className="text-volt mb-3 mx-auto" />
-                <h3 className="text-white font-semibold text-lg mb-2" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Precisão</h3>
-                <p className="text-white/70 text-sm" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Dimensionamento exato para cada necessidade.</p>
+                <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Precisão</h3>
+                <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Dimensionamento exato para cada necessidade.</p>
               </div>
             </div>
           </FadeIn>
