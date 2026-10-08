@@ -95,23 +95,23 @@ const AboutPage: React.FC = () => {
           </FadeIn>
 
           <FadeIn delay={0.4}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center items-center">
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center w-full">
                 <Shield size={32} className="text-volt mb-3 mx-auto" />
                 <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Confiabilidade</h3>
                 <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Equipamentos revisados e prontos para operação contínua.</p>
               </div>
-              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center w-full">
                 <Award size={32} className="text-volt mb-3 mx-auto" />
                 <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Excelência</h3>
                 <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Frota moderna com tecnologia de última geração.</p>
               </div>
-              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center w-full">
                 <Users size={32} className="text-volt mb-3 mx-auto" />
                 <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Parceria</h3>
                 <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Relacionamentos de longo prazo baseados em confiança.</p>
               </div>
-              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center">
+              <div className="fx-grad p-6 rounded-2xl border border-ice/10 hover:border-volt/30 transition-all duration-300 text-center w-full">
                 <Target size={32} className="text-volt mb-3 mx-auto" />
                 <h3 className="text-white font-semibold text-lg mb-2 text-center" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }}>Precisão</h3>
                 <p className="text-white/70 text-sm text-center" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>Dimensionamento exato para cada necessidade.</p>
