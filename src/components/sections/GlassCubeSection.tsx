@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { FadeIn } from '@/components/ui/FadeIn';
 
 const GlassCubeSection: React.FC = () => {
@@ -43,7 +42,7 @@ const GlassCubeSection: React.FC = () => {
       let fontSize = Math.min(height * 0.21, width * (isMobile ? 0.21 : 0.118));
       bgCtx.font = `800 ${fontSize}px Poppins, sans-serif`;
 
-      const lines = ['Energia', 'Sem', 'Limites'];
+      const lines = ['Ilumine', 'Seu', 'Futuro'];
       const maxWidth = width * (isMobile ? 0.9 : 0.5);
 
       // Scale down if needed
@@ -108,9 +107,30 @@ const GlassCubeSection: React.FC = () => {
     bgQuad.frustumCulled = false;
     bgScene.add(bgQuad);
 
-    // Glass cube
-    const cubeGeometry = new RoundedBoxGeometry(1, 1, 1, 8, 0.12);
-    cubeGeometry.center();
+    // Glass lamp shape
+    const lampPoints = [];
+    // Bulb (top rounded part)
+    for (let i = 0; i <= 20; i++) {
+      const t = i / 20;
+      const angle = t * Math.PI;
+      const x = Math.sin(angle) * 0.5;
+      const y = Math.cos(angle) * 0.5 + 0.3;
+      lampPoints.push(new THREE.Vector2(x, y));
+    }
+    // Neck (narrowing)
+    lampPoints.push(new THREE.Vector2(0.3, -0.2));
+    lampPoints.push(new THREE.Vector2(0.25, -0.35));
+    // Base (screw part)
+    lampPoints.push(new THREE.Vector2(0.22, -0.5));
+    lampPoints.push(new THREE.Vector2(0.2, -0.6));
+    lampPoints.push(new THREE.Vector2(0.18, -0.7));
+    lampPoints.push(new THREE.Vector2(0.15, -0.8));
+    lampPoints.push(new THREE.Vector2(0.1, -0.85));
+    lampPoints.push(new THREE.Vector2(0.05, -0.88));
+    lampPoints.push(new THREE.Vector2(0, -0.9));
+
+    const lampGeometry = new THREE.LatheGeometry(lampPoints, 32);
+    lampGeometry.center();
 
     // Glass shader
     const createGlassMaterial = (isBackside: boolean) => {
@@ -246,13 +266,13 @@ const GlassCubeSection: React.FC = () => {
     const frontMat = createGlassMaterial(false);
     const backMat = createGlassMaterial(true);
 
-    const cube = new THREE.Mesh(cubeGeometry, frontMat);
-    const cubeBack = new THREE.Mesh(cubeGeometry, backMat);
+    const lamp = new THREE.Mesh(lampGeometry, frontMat);
+    const lampBack = new THREE.Mesh(lampGeometry, backMat);
 
     const pivot = new THREE.Group();
     const spinner = new THREE.Group();
-    spinner.add(cube);
-    spinner.add(cubeBack);
+    spinner.add(lamp);
+    spinner.add(lampBack);
     pivot.add(spinner);
     scene.add(pivot);
 
@@ -422,7 +442,7 @@ const GlassCubeSection: React.FC = () => {
       renderer.dispose();
       rtBack.dispose();
       rtFront.dispose();
-      cubeGeometry.dispose();
+      lampGeometry.dispose();
       frontMat.dispose();
       backMat.dispose();
       bgTexture.dispose();
@@ -440,18 +460,7 @@ const GlassCubeSection: React.FC = () => {
         />
 
         {/* UI Overlay */}
-        <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-8 sm:p-12">
-          {/* Top */}
-          <div className="flex justify-between items-start">
-            <FadeIn delay={0.2}>
-              <div className="text-left">
-                <p className="text-ice/60 text-sm uppercase tracking-wider mb-2">Interativo</p>
-                <h3 className="text-ice font-bold text-2xl sm:text-3xl">Arraste para Explorar</h3>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Bottom */}
+        <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-end p-8 sm:p-12">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
             <FadeIn delay={0.4}>
               <div className="max-w-md">
