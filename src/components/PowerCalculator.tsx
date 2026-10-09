@@ -141,7 +141,7 @@ export const PowerCalculator: React.FC = () => {
                   "
                 >
                   <MessageCircle size={20} />
-                  <span>Solicitar Orçamento</span>
+                  <span>Solicitar Orçamento para {estimatedKVA} kVA no WhatsApp</span>
                 </button>
               </div>
             </div>
