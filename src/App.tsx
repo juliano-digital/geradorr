@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { StatsSection } from '@/components/sections/StatsSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
 import { PowerCalculator } from '@/components/PowerCalculator';
 import { FleetSection } from '@/components/sections/FleetSection';
@@ -24,6 +25,7 @@ function App() {
               element={
                 <>
                   <HeroSection />
+                  <StatsSection />
                   <ServicesSection />
                   <PowerCalculator />
                   <FleetSection />

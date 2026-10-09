@@ -11,7 +11,7 @@ export const WhatsAppFloat: React.FC = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale com a gente no WhatsApp"
-      className="fixed bottom-6 right-6 z-50 group"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 group"
     >
       <div className="relative">
         {/* Pulse rings */}
