@@ -7,6 +7,17 @@ import { quoteSchema, type QuoteFormData } from '@/schemas/quoteSchema';
 import { siteConfig } from '@/data/site';
 import { buildWhatsAppLink } from '@/lib/whatsapp';
 
+/**
+ * CONTATO — seção reescrita para não quebrar o layout.
+ *
+ * Correções aplicadas:
+ * 1. Wrapper exato de centralização: `container mx-auto px-4 sm:px-6 lg:px-8`.
+ * 2. Espaçamento vertical rígido: py-12 (mobile) → py-16 (desktop).
+ * 3. Grid mobile-first: `grid-cols-1 lg:grid-cols-2 gap-8` (nunca grudado).
+ * 4. Inputs com `w-full min-w-0` + `max-w-full` no grid para o formulário
+ *    nunca estourar a largura do container em telas pequenas.
+ * 5. CTA `w-full sm:w-auto` (largos no celular, ajustados no desktop).
+ */
 export const ContactSection: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -20,7 +31,8 @@ export const ContactSection: React.FC = () => {
   });
 
   const onSubmit = async (data: QuoteFormData) => {
-    const message = `*Solicitação de Orçamento - VoltMax Geradores*\n\n` +
+    const message =
+      `*Solicitação de Orçamento - VoltMax Geradores*\n\n` +
       `*Nome:* ${data.name}\n` +
       `*Empresa:* ${data.company || 'Não informado'}\n` +
       `*Telefone:* ${data.phone}\n` +
@@ -37,98 +49,66 @@ export const ContactSection: React.FC = () => {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
-  const inputClassName = (hasError: boolean) => `
-    w-full px-4 py-3 border rounded-lg
-    bg-white/5 text-white placeholder-white/30
-    focus:ring-2 focus:ring-blue-500 focus:border-transparent
-    transition-all duration-200
-    ${hasError ? 'border-red-500' : 'border-gray-300'}
-  `;
+  // w-full + min-w-0 garante que o input jamais force overflow no mobile
+  const inputClassName = (hasError: boolean) =>
+    `w-full min-w-0 max-w-full rounded-lg border bg-white/5 px-4 py-3 text-white placeholder-white/30 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-volt ${
+      hasError ? 'border-red-500' : 'border-white/15'
+    }`;
 
   return (
-    <section id="contato" className="py-12 sm:py-16 bg-[#0a0a0a]">
+    <section id="contato" className="bg-bg py-12 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
+        {/* Header da seção — centralizado e consistente */}
+        <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">
           <FadeIn>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
               Entre em Contato
             </h2>
-            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-base text-white/70 sm:text-lg">
               Solicite um orçamento personalizado ou tire suas dúvidas
             </p>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {/* Contact Info */}
+        {/* Grid principal: 1 coluna no mobile, 2 colunas no desktop, gap-8 */}
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2">
+          {/* Informações de contato */}
           <FadeIn delay={0} x={-30}>
             <div className="space-y-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">
-                Fale Conosco
-              </h3>
+              <h3 className="text-xl font-bold text-white sm:text-2xl">Fale Conosco</h3>
 
               <div className="space-y-4">
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-volt/10 flex items-center justify-center flex-shrink-0">
-                    <Phone size={18} className="text-volt" />
+                {[
+                  { icon: Phone, label: 'Telefone', value: siteConfig.phone },
+                  { icon: MessageCircle, label: 'WhatsApp', value: siteConfig.phone },
+                  { icon: Mail, label: 'E-mail', value: siteConfig.email },
+                  { icon: MapPin, label: 'Endereço', value: siteConfig.address },
+                  { icon: Clock, label: 'Horário', value: siteConfig.hours },
+                ].map(({ icon: Icon, label, value }) => (
+                  <div
+                    key={label}
+                    className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-4"
+                  >
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-volt/10">
+                      <Icon size={18} className="text-volt" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="mb-1 text-xs uppercase tracking-wider text-white/60">{label}</p>
+                      <p className="break-words text-sm font-medium text-white sm:text-base">{value}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-white/60 text-xs uppercase tracking-wider mb-1">Telefone</p>
-                    <p className="text-white font-medium text-sm sm:text-base">{siteConfig.phone}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-volt/10 flex items-center justify-center flex-shrink-0">
-                    <MessageCircle size={18} className="text-volt" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-xs uppercase tracking-wider mb-1">WhatsApp</p>
-                    <p className="text-white font-medium text-sm sm:text-base">{siteConfig.phone}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-volt/10 flex items-center justify-center flex-shrink-0">
-                    <Mail size={18} className="text-volt" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-xs uppercase tracking-wider mb-1">E-mail</p>
-                    <p className="text-white font-medium text-sm sm:text-base">{siteConfig.email}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-volt/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin size={18} className="text-volt" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-xs uppercase tracking-wider mb-1">Endereço</p>
-                    <p className="text-white font-medium text-sm sm:text-base">{siteConfig.address}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-volt/10 flex items-center justify-center flex-shrink-0">
-                    <Clock size={18} className="text-volt" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-xs uppercase tracking-wider mb-1">Horário</p>
-                    <p className="text-white font-medium text-sm sm:text-base">{siteConfig.hours}</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </FadeIn>
 
-          {/* Form */}
-          <FadeIn delay={0.2} x={30}>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Formulário — protegido contra overflow com min-w-0/max-w-full */}
+          <FadeIn delay={0.2} x={30} className="min-w-0 max-w-full">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
               {/* Nome e Empresa */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-white text-sm font-medium mb-2">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+                <div className="min-w-0">
+                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
                     Nome <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -139,12 +119,12 @@ export const ContactSection: React.FC = () => {
                     placeholder="Seu nome completo"
                   />
                   {errors.name && (
-                    <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+                    <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
                   )}
                 </div>
 
-                <div>
-                  <label htmlFor="company" className="block text-white text-sm font-medium mb-2">
+                <div className="min-w-0">
+                  <label htmlFor="company" className="mb-2 block text-sm font-medium text-white">
                     Empresa
                   </label>
                   <input
@@ -158,9 +138,9 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* Telefone e E-mail */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <div>
-                  <label htmlFor="phone" className="block text-white text-sm font-medium mb-2">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+                <div className="min-w-0">
+                  <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white">
                     Telefone <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -171,12 +151,12 @@ export const ContactSection: React.FC = () => {
                     placeholder="(11) 99999-9999"
                   />
                   {errors.phone && (
-                    <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
+                    <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>
                   )}
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-white text-sm font-medium mb-2">
+                <div className="min-w-0">
+                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-white">
                     E-mail <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -187,14 +167,14 @@ export const ContactSection: React.FC = () => {
                     placeholder="seu@email.com"
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+                    <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
                   )}
                 </div>
               </div>
 
-              {/* Tipo de Aplicação - Full Width */}
-              <div className="col-span-1 md:col-span-2">
-                <label htmlFor="application" className="block text-white text-sm font-medium mb-2">
+              {/* Tipo de Aplicação */}
+              <div className="min-w-0">
+                <label htmlFor="application" className="mb-2 block text-sm font-medium text-white">
                   Tipo de Aplicação <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -202,23 +182,23 @@ export const ContactSection: React.FC = () => {
                   id="application"
                   className={inputClassName(!!errors.application)}
                 >
-                  <option value="">Selecione...</option>
-                  <option value="industrial">Indústria</option>
-                  <option value="construcao">Construção Civil</option>
-                  <option value="eventos">Eventos</option>
-                  <option value="saude">Saúde</option>
-                  <option value="comercial">Comércio</option>
-                  <option value="agronegocio">Agronegócio</option>
-                  <option value="emergencia">Emergência</option>
+                  <option value="" className="bg-bg">Selecione...</option>
+                  <option value="industrial" className="bg-bg">Indústria</option>
+                  <option value="construcao" className="bg-bg">Construção Civil</option>
+                  <option value="eventos" className="bg-bg">Eventos</option>
+                  <option value="saude" className="bg-bg">Saúde</option>
+                  <option value="comercial" className="bg-bg">Comércio</option>
+                  <option value="agronegocio" className="bg-bg">Agronegócio</option>
+                  <option value="emergencia" className="bg-bg">Emergência</option>
                 </select>
                 {errors.application && (
-                  <p className="text-red-500 text-xs mt-1">{errors.application.message}</p>
+                  <p className="mt-1 text-xs text-red-500">{errors.application.message}</p>
                 )}
               </div>
 
-              {/* Mensagem - Full Width */}
-              <div className="col-span-1 md:col-span-2">
-                <label htmlFor="message" className="block text-white text-sm font-medium mb-2">
+              {/* Mensagem */}
+              <div className="min-w-0">
+                <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
                   Mensagem
                 </label>
                 <textarea
@@ -230,25 +210,33 @@ export const ContactSection: React.FC = () => {
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* Submit — full-width no mobile, ajustado no desktop */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="
-                  gradient-btn w-full
-                  px-8 py-4 rounded-lg
-                  text-white font-semibold text-base sm:text-lg
-                  flex items-center justify-center gap-2
-                  transition-all duration-200 hover:scale-105
-                  disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
-                  min-h-[44px]
-                "
+                className="gradient-btn flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 sm:w-auto sm:text-lg"
               >
                 {isSubmitting ? (
                   <>
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="h-5 w-5 animate-spin text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
                     </svg>
                     <span>Enviando...</span>
                   </>
@@ -261,7 +249,7 @@ export const ContactSection: React.FC = () => {
               </button>
 
               {isSubmitted && (
-                <p className="text-green-500 text-sm font-medium text-center">
+                <p className="text-center text-sm font-medium text-green-500">
                   ✓ Redirecionando para o WhatsApp...
                 </p>
               )}
