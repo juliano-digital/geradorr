@@ -27,17 +27,17 @@ export const StatsSection: React.FC = () => {
   return (
     <section className="py-12 sm:py-16 bg-bg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {stats.map((stat, index) => (
             <FadeIn key={stat.label} delay={index * 0.1}>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600 mb-2">
+              <div className="text-center p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div className="text-3xl sm:text-4xl font-bold text-volt mb-2">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-600 font-semibold mb-1">
+                <div className="text-sm sm:text-base text-white font-semibold mb-1">
                   {stat.label}
                 </div>
-                <div className="text-xs text-gray-500">
+                <div className="text-xs sm:text-sm text-white/60">
                   {stat.description}
                 </div>
               </div>

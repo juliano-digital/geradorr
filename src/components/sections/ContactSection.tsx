@@ -46,7 +46,7 @@ export const ContactSection: React.FC = () => {
   `;
 
   return (
-    <section id="contato" className="py-12 sm:py-16 bg-[#0a0a0a] mb-16">
+    <section id="contato" className="py-12 sm:py-16 bg-[#0a0a0a]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
