@@ -20,6 +20,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+ * CORREÇÃO DA CENTRALIZAÇÃO (Regra de Ouro):
+ * Este projeto usa Tailwind CSS v4, onde a classe `container` NAO possui
+ * centralização automática por padrão (sem `mx-auto` ela encosta na esquerda).
+ * Como todas as seções usam `container mx-auto`, garantimos aqui que o
+ * wrapper `container` seja SEMPRE centralizado com margens automáticas.
+ */
+@layer components {
+  .container {
+    margin-inline: auto;
+    max-width: 100%;
+  }
+  @media (min-width: 640px) { .container { max-width: 640px; } }
+  @media (min-width: 768px) { .container { max-width: 768px; } }
+  @media (min-width: 1024px) { .container { max-width: 1024px; } }
+  @media (min-width: 1280px) { .container { max-width: 1280px; } }
+  @media (min-width: 1536px) { .container { max-width: 1536px; } }
+}
+
 body,
 #root {
   background-color: #0C0C0C;
