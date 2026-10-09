@@ -59,7 +59,7 @@ export const FleetSection: React.FC = () => {
         </FadeIn>
 
         {/* Fleet Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredFleet.map((gen, index) => (
             <FadeIn key={gen.id} delay={index * 0.1}>
               <article className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-volt/30 transition-all duration-200">

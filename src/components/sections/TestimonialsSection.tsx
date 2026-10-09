@@ -19,7 +19,7 @@ export const TestimonialsSection: React.FC = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <FadeIn key={testimonial.id} delay={index * 0.1}>
               <article className="p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-volt/30 transition-all duration-200">
